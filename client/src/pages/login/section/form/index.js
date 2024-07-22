@@ -1,50 +1,27 @@
 import React, { useState } from "react";
 import styles from "./form.module.scss";
 import BrandLogo from "../../../../components/shared/brand";
-// import { Icon } from "@iconify/react";
-import Input from "../../../../components/atoms/input";
-import Button from "../../../../components/atoms/button";
-import { useNavigate } from "react-router-dom";
+import Signin from "../../partials/signin";
+import Signup from "../../partials/signup";
 
 function Form() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [active, setActive] = useState("signin");
 
   return (
     <section className={styles["form-container"]}>
       <BrandLogo />
-      <div className={styles.form}>
-        <Button
-          text="Join With Google"
-          icon="bi:google"
-          className={styles.google}
-        />
-
-        <div className={styles.option}>
-          <span>or join with email address</span>
-        </div>
-        <article className={styles.details}>
-          <Input
-            type="email"
-            placeholder={`Type Your Email Address`}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <Input
-            type="password"
-            placeholder={`Type Your Password`}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </article>
-        <Button
-          text="Join With Email"
-          icon="material-symbols:login"
-          className={styles.emailbtn}
-          handleClick={()=>navigate("/notes")}
-        />
-      </div>
+      {active === "signin" ? <Signin /> : <Signup handleSwitch={()=>setActive("signin")}/>}
+      {active === "signin" ? (
+        <p>
+          Not a registered user?{" "}
+          <span onClick={() => setActive("signup")}><u>Sign Up Now</u></span>
+        </p>
+      ) : (
+        <p>
+          Already a registered user?{" "}
+          <span onClick={() => setActive("signin")}><u>Sign In Now</u></span>
+        </p>
+      )}
     </section>
   );
 }

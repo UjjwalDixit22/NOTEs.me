@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
-MONGODB_URI= "mongodb+srv://shivangagrawal139:root@cluster0.ciizs6l.mongodb.net"
 
-mongoose.connect(MONGODB_URI,{
+mongoose.connect(process.env.MONGODB_URI,{
     useNewUrlParser:true,
     useUnifiedTopology:true
 } ).then(()=>{

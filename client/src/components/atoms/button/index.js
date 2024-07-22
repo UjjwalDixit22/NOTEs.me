@@ -10,8 +10,8 @@ function Button(props) {
       onClick={handleClick}
       disabled={isDisabled}
     >
-      <Icon icon={icon} />
-      <h3>{text}</h3>
+      {icon?<Icon icon={icon} />:null}
+      {text?<h3>{text}</h3>:null}
     </button>
   );
 }

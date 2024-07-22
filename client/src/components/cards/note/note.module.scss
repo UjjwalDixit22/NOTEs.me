@@ -38,7 +38,17 @@
 }
 
     .footer{
+        display: flex;
+        align-items: center;
         font-size: var(--fs-sm);
         color: var(--grey);
+
+        .saveBtn{
+            width: auto;
+            padding: 9px;
+            background-color:rgb(241, 192, 133);
+            margin-left: auto;
+
+        }
     }
 }

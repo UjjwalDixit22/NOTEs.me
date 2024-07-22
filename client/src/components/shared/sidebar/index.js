@@ -26,6 +26,11 @@ function Sidebar() {
     }
   };
 
+  const handleLogout = () => {
+    utils.removeFromLocalStorage("auth-key");
+    navigate("/");
+  };
+
   return (
     <aside className={styles.sidebar}>
       <BrandLogo logoOnly={true} type={"dark"} className={styles.logo} />
@@ -46,7 +51,7 @@ function Sidebar() {
         })}
       </section>
       <article className={styles.logout}>
-        <Icon icon={"material-symbols:logout"} onClick={() => navigate("/")} />
+        <Icon icon={"material-symbols:logout"} onClick={handleLogout} />
       </article>
     </aside>
   );
