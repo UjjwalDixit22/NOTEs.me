@@ -17,7 +17,7 @@ function Signin(props) {
     if (!email.length || !password.length) {
       toast.error("Some required field are empty");
     }
-    fetch("http://localhost:3001/api/users/signin", {
+    fetch("https://notes-me.onrender.com/api/users/signin", {
       headers: {
         "Content-Type": "application/json",
       },

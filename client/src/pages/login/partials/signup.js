@@ -15,9 +15,9 @@ function Signup(props) {
     if (!email.length || !password.length || !name.length) {
       toast.error("Some required field are empty");
     }
-    fetch("http://localhost:3001/api/users/signup", {
-      headers:{
-        "Content-Type":"application/json",
+    fetch("https://notes-me.onrender.com/api/users/signup", {
+      headers: {
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email,
@@ -29,11 +29,10 @@ function Signup(props) {
       .then((res) => res.json())
       .then((data) => {
         console.log({ data });
-        if(data?.success===201) {
+        if (data?.success === 201) {
           toast.success("User registered Successfully");
           props.handleSwitch();
-        }
-        else toast.error(data?.message);
+        } else toast.error(data?.message);
       })
       .catch((error) => {
         console.log({ error });
